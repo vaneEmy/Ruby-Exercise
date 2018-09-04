@@ -24,17 +24,22 @@ def look_up_area_code(city_name, cities)
 end
 
 loop do
-    puts "Which city code do you want to look up?"
-    result = gets.chomp
+    puts "Do you want to look up a area code base on a city name (Y/N)?"
+    answer = gets.chomp
     
-    city_available = look_up_city(result, mexico_cities)
-    
-    if city_available 
-        puts "The code is: ", look_up_area_code(result, mexico_cities) 
-    else 
-        puts "The city is not available"
-        break
+    if answer != 'Y' 
+        break        
     end
     
+    puts "Which city do you want the area code?"
     displaying_cities(mexico_cities)
+    code = gets.chomp
+    
+    city_available = look_up_city(code, mexico_cities)
+    
+    if city_available
+         puts "The code is: ", look_up_area_code(code, mexico_cities) 
+    else
+        puts "The city is not available"
+    end
 end
